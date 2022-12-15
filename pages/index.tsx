@@ -1,8 +1,31 @@
+import axios from 'axios'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  const [data, setData] = useState([])
+
+  // useEffect(() => {
+  //   // マウント時に実行
+  //   axios.get('http://localhost:9004').then(res => console.log(res.data))
+  //   return () => {
+  //     // アンマウント時に実行
+  //   }
+  // }, [])
+
+  const handleClick = (async () => {
+    try {
+      const res = await axios.get('http://localhost:9004/todos')
+      console.log('クリックしました', res)
+      setData(res.data)
+    } catch (error) {
+      throw new Error('取得に失敗しました')
+    }
+  })
+
   return (
     <div className={styles.container}>
       <Head>
@@ -11,11 +34,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <button onClick={handleClick}>ボタン</button>
+      <ul data-testid="list">
+        {data && data.map((item: any, index) => <li key={index}>{item.title}</li>)}
+      </ul>
+
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
+        <Link href="/">top</Link>
         <p className={styles.description}>
           Get started by editing{' '}
           <code className={styles.code}>pages/index.tsx</code>
