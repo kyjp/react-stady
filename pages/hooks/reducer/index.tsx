@@ -22,6 +22,7 @@ const index = () => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     // 場合によっては純粋関数にならない
+    const A = 3
     setPosition(e.target.value == 'sakai' ? 'チーフ' : 'エンジニア')
   }
 

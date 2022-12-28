@@ -19,7 +19,7 @@ export default function Home() {
   const handleClick = (async () => {
     try {
       const res = await axios.get('http://localhost:9004/todos')
-      console.log('クリックしました', res)
+      // console.log('クリックしました', res)
       setData(res.data)
     } catch (error) {
       throw new Error('取得に失敗しました')

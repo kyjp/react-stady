@@ -108,10 +108,10 @@ const index = () => {
     setCount(1)
   }, [])
 
-  // useLayoutEffect(() => {
-  //   // DOMに反映される前に実行
-  //   setCount(1)
-  // }, [])
+  useLayoutEffect(() => {
+    // DOMに反映される前に実行
+    setCount(1)
+  }, [])
 
   return (
     <div>

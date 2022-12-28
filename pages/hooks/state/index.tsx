@@ -36,8 +36,8 @@ import { useState, MouseEvent } from "react"
 //   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
 //     // 非同期処理　再生成時に処理がされるので２回目以降は無効
 //     setTemp(temp + 1)
-//     setTemp(temp + 1)
-//     // setTemp(prev => prev + 1)
+//     // setTemp(temp + 1)
+//     setTemp(prev => prev + 1)
 //   }
 //   return (
 //     <div>
@@ -69,15 +69,16 @@ const index = () => {
   )
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
 
-    temp.push({ 'name': 'Asada' })
-    console.log(temp)
-    setTemp(temp)
+    // temp.push({ 'name': 'Asada' })
+    // console.log(temp)
+    // setTemp(temp)
 
     // 異なるオブジェクトを渡す必要がある Object.is()で判別（メソッドが２つが同一かを判断）
     // スプレッド演算子はシャローコピー
     //https://zenn.dev/takuya_naganuma/articles/8c4a7e68cd58e6
-    // const obj = [ ...temp, {'name': 'Adada'} ]
-    // setTemp(obj)
+
+    const obj = [ ...temp, {'name': 'Adada'} ]
+    setTemp(obj)
   }
   return (
     <div>
